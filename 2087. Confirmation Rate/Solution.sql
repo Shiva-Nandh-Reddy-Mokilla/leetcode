@@ -1,11 +1,4 @@
-SELECT 
-    s.user_id,
-   ROUND(AVG(CASE WHEN c.action = 'confirmed' THEN 1 ELSE 0 END),2) AS confirmation_rate
-FROM 
-    Signups s
-LEFT JOIN 
-    Confirmations c ON s.user_id = c.user_id
-GROUP BY 
-    s.user_id 
-order by
-    confirmation_rate asc, s.user_id desc
+SELECT s.user_id , ROUND(COUNT(CASE WHEN action='confirmed' THEN 1 END)/COUNT(*),2) AS confirmation_rate FROM Signups s
+LEFT JOIN Confirmations c USING(user_id)
+GROUP BY s.user_id
+ORDER BY confirmation_rate ASC
