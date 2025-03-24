@@ -7,8 +7,9 @@ class Solution(object):
         if not nums:
             return 0
         nums.sort()
-        ij=1
         count=1
+        ij=1
+        
         for i in range(1,len(nums)):
             if nums[i]==nums[i-1]:
                 count+=1
@@ -17,5 +18,7 @@ class Solution(object):
             if count<=2:
                 nums[ij]=nums[i]
                 ij+=1
+        return ij
+
+
         
-        return ij 
