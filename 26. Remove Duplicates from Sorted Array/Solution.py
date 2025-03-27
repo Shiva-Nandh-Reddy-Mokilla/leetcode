@@ -5,12 +5,19 @@ class Solution(object):
         :rtype: int
         """
         nums.sort()
+        count=0
         i=1
         while i<len(nums):
             if nums[i]==nums[i-1]:
-                nums.pop(i)
+                if count>1:
+                    nums.pop(i)
+                else:
+                    count=count+1
             else:
+                count=0
                 i+=1
-        return len(nums)
-        
+                
+            
+            
+       
 
