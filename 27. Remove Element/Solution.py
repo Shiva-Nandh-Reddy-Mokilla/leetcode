@@ -5,11 +5,10 @@ class Solution(object):
         :type val: int
         :rtype: int
         """
-        i=0
-        while i<len(nums):
-            if nums[i]==val:
-                nums.pop(i)
-            else:
-                i+=1
+        n=0
+        while n<len(nums):
+            if nums[n]==val:
+                nums.pop(n)
+                n=n-1
+            n+=1
         return len(nums)
-
