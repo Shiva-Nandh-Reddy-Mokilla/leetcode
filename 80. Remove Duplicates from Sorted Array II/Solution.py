@@ -4,21 +4,22 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        if not nums:
-            return 0
         nums.sort()
-        count=1
-        ij=1
-        
-        for i in range(1,len(nums)):
+        count=0
+        i=1
+        while i<len(nums):
             if nums[i]==nums[i-1]:
                 count+=1
+                if count>1:
+                    nums.pop(i)
+                else:
+                    i+=1
+                    
+                
             else:
-                count=1
-            if count<=2:
-                nums[ij]=nums[i]
-                ij+=1
-        return ij
-
-
+                count=0
+                i+=1
+        
+        
+       
         
