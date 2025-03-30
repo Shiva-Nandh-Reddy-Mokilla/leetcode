@@ -4,19 +4,21 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        n=len(nums)
+        
         prefix=1
         suffix=1
-        result=[1]*n
-        for i in range(n):
-            result[i]=prefix
-            prefix=prefix*nums[i]
+        new=[1]*len(nums)
+        for i in range(len(nums)):
+            new[i]=prefix
+            prefix=nums[i]*prefix
+            
+        for i in range(len(nums)-1,-1,-1):
+            new[i]=suffix*new[i]
+            suffix=nums[i]*suffix
+        return new
 
-        for i in range(n-1,-1,-1):
-            result[i]*=suffix
-            suffix=suffix*nums[i]
-        return result
-        
+         
+           
 
 
 
