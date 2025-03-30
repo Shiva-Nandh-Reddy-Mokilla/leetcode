@@ -9,10 +9,10 @@ class Solution(object):
         area=0
         while left<right:
             area=max(min(height[left],height[right])*(right-left),area)
-            if height[left] < height[right]:
-                left += 1
+            if height[left]<height[right]:
+                left+=1
             else:
-                right -= 1
+                right-=1
         return area
-
+        
         
