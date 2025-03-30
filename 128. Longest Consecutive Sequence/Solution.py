@@ -4,20 +4,21 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        numset=set(nums)
+        countmax=0
+        length=0
         if not nums:
             return 0
-        nums.sort()
-        i=1
-        count=0
-        countmax=0
-        for i in range(len(nums)):
-            if nums[i] == nums[i - 1]:  
-                continue
-            elif nums[i]==nums[i-1]+1:
-                count+=1
-                countmax=max(count,countmax)
-            else:
-                count=0
-        return countmax+1
-        
-        
+
+
+        for num in numset:
+            if (num-1) not in numset:
+                length=1
+                while num+length in numset:
+                    length+=1
+                countmax=max(length,countmax)
+
+            
+        return countmax
+
+    
