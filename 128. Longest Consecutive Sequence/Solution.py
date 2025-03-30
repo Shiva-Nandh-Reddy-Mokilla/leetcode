@@ -6,9 +6,8 @@ class Solution(object):
         """
         numset=set(nums)
         countmax=0
-        length=0
-        if not nums:
-            return 0
+        
+       
 
 
         for num in numset:
