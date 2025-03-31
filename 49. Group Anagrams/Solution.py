@@ -6,9 +6,10 @@ class Solution(object):
         """
         res=defaultdict(list)
         for s in strs:
-            sorteds = ''.join(sorted(s))
+            sorteds=''.join(sorted(s))
             res[sorteds].append(s)
         return res.values()
+    
 
 
         
