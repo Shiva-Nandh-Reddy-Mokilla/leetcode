@@ -9,7 +9,6 @@ class Solution(object):
             return False
         counts={}
         countt={}
-
         for i in range(len(s)):
             counts[s[i]]=1+counts.get(s[i],0)
             countt[t[i]]=1+countt.get(t[i],0)
