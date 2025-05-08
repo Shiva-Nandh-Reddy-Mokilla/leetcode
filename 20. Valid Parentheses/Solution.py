@@ -1,20 +1,17 @@
-class Solution(object):
-    def isValid(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        
+class Solution:
+    def isValid(self, s: str) -> bool:
         stack=[]
-        opentoclose={']':'[','}':'{',')':'('}
-        for c in s:
-            if c in opentoclose:
-                if stack and stack[-1]==opentoclose[c]:
+        heap={')':'(',']':'[','}':'{'}
+        for i in s:
+            if i in heap:
+                if stack and stack[-1]==heap[i]:
                     stack.pop()
                 else:
                     return False
             else:
-                stack.append(c)
-        return True if not stack else False
-                
-            
+                stack.append(i)
+        if not stack:
+            return True
+        else:
+            return False
+                    
