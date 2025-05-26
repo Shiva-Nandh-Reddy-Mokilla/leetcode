@@ -3,57 +3,25 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
-        """
-        Do not return anything, modify head in-place instead.
-        """
-        slow=head
-        fast=head.next
-        while fast and fast.next:
-            slow=slow.next
-            fast=fast.next.next
-
-
-        prev=None
-        current=slow.next
-        slow.next=None
-        while current:
-            nex=current.next
-            current.next=prev
-            prev=current
-            current=nex
-        h=ListNode(0)
-        count=1
-      
-
-        while h and prev:
-            if count&1:
-                h.next=head
-                h=h.next
-                head=head.next
-            else:
-                h.next=prev
-                h=h.next
-                prev=prev.next
-            count+=1
-        if prev:
-            h.next=prev
-        if head:
-            h.next=head
-
-
-
-            
-            
-
-            
+        if not head:
+            return
         
-
+        nodes = []
+        cur = head
+        while cur:
+            nodes.append(cur)
+            cur = cur.next
         
-
+        i, j = 0, len(nodes) - 1
+        while i < j:
+            nodes[i].next = nodes[j]
+            i += 1
+            if i >= j:
+                break
+            nodes[j].next = nodes[i]
+            j -= 1
         
-
-        
-
-        
+        nodes[i].next = None
