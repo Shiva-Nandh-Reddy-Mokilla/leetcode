@@ -1,39 +1,59 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
-        if not head or not head.next:
-            return
-
-        # Step 1: Find middle
-        slow, fast = head, head.next
+        """
+        Do not return anything, modify head in-place instead.
+        """
+        slow=head
+        fast=head.next
         while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
+            slow=slow.next
+            fast=fast.next.next
 
-        # Step 2: Reverse second half
-        prev = None
-        current = slow.next
-        slow.next = None
+
+        prev=None
+        current=slow.next
+        slow.next=None
         while current:
-            nxt = current.next
-            current.next = prev
-            prev = current
-            current = nxt
+            nex=current.next
+            current.next=prev
+            prev=current
+            current=nex
+        h=ListNode(0)
+        count=1
+      
 
-        # Step 3: Merge using count toggle
-        first, second = head, prev
-        dummy = ListNode(0)
-        tail = dummy
-        count = 0
-
-        while first and second:
-            if count % 2 == 0:
-                tail.next = first
-                first = first.next
+        while h and prev:
+            if count&1:
+                h.next=head
+                h=h.next
+                head=head.next
             else:
-                tail.next = second
-                second = second.next
-            tail = tail.next
-            count += 1
+                h.next=prev
+                h=h.next
+                prev=prev.next
+            count+=1
+        if prev:
+            h.next=prev
+        if head:
+            h.next=head
 
-        # Append remaining node (if any)
-        tail.next = first or second
+
+
+            
+            
+
+            
+        
+
+        
+
+        
+
+        
+
+        
