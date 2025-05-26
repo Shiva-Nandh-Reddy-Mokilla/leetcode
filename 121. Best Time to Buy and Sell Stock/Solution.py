@@ -4,6 +4,11 @@ class Solution:
         maximum=0
         minimum=prices[0]
         for i in prices:
+            if minimum>i:
+                minimum=i
+            if maximum<(i-minimum):
+                maximum=i-minimum
+
 
             minimum=min(minimum,i)
             maximum=max(maximum,i-minimum)
