@@ -9,14 +9,17 @@ class Solution:
         sumof=0
         dummy=ListNode(0)
         res=dummy
-        while l1 or l2 or carry!=0:
-            val1 = l1.val if l1 else 0
-            val2 = l2.val if l2 else 0
-            sumof=(carry+val1+val2)%10
-            carry=(carry+val1+val2)//10
+        while l1 or l2 or carry:
+            sum=carry
+            if l1:
+                sum+=l1.val
+                l1=l1.next 
+            if l2:
+                sum+=l2.val
+                l2=l2.next
+            sumof=sum%10
+            carry=sum//10
             dummy.next=ListNode(sumof)
-            l1=l1.next if l1 else 0
-            l2=l2.next if l2 else 0
             dummy=dummy.next
           
         return res.next
