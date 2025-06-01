@@ -12,14 +12,14 @@ class Solution:
 
             leftside=height(root.left)
             rightside=height(root.right)
-            if leftside==-1:
-                return -1
-            if rightside==-1:
-                return -1
+            if leftside==-2:
+                return -2
+            if rightside==-2:
+                return -2
             if abs(leftside-rightside)>1:
-                return -1
+                return -2
             return max(leftside,rightside)+1
-        return height(root)!=-1
+        return height(root)!=-2
 
 
 
