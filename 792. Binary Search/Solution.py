@@ -1,22 +1,15 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        if target not in nums:
-            return -1
         low=0
         high=len(nums)-1
-       
+
         while low<=high:
-            mid=(low+high)//2
-            if nums[mid]>target:
-                high=mid-1
-            elif nums[mid]<target:
-                low=mid+1
-            else:
-                return mid
-            
+            if nums[low]==target:
+                return low
+            if nums[high]==target:
+                return high
+            low+=1
+            high-=1
+        return -1
 
-
-        
-       
-        
         
